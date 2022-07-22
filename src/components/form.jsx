@@ -54,7 +54,6 @@ export default function Form() {
   const getArrayOfCities = async () => {
     const result = await axios('http://localhost:8080/api/v1/cities')
     setArrayOfCities(result.data)
-    console.log('citi', result.data )
     return result.data
   }
   
