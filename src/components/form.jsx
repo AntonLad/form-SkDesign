@@ -68,14 +68,13 @@ export default function Form() {
     getArrayOfSource()
   }, [])
 
-  const citySelected = document.getElementById("city")
-  const changeCity = () => {
-    setValue({ ...value, city:  citySelected?.options[citySelected?.selectedIndex]?.value })
+  
+  const changeCity = (e) => {
+    setValue({ ...value, city:  e.target.value })
   }
 
-  const sourceSelected = document.getElementById("sourceOfInfo")
-  const changeSource = () => {
-    setValue({ ...value, sourceOfInfo: sourceSelected?.options[sourceSelected?.selectedIndex]?.value })
+  const changeSource = (e) => {
+    setValue({ ...value, sourceOfInfo: e.target.value })
   }
 
   const resetCity = document.getElementById("city")
@@ -147,7 +146,7 @@ export default function Form() {
         />
       </div>
       <Select defaultValue="Выберите город *" id="city" name="city" 
-        onClick={changeCity}
+        onClick={(e) => changeCity(e)}
       >
         <option value="Выберите город *" disabled>Выберите город *</option>
         {arrayOfCities.map((it) => {
@@ -182,7 +181,7 @@ export default function Form() {
               onChange={e => {handleChange(e)}}/>  
           </div>
           <Select defaultValue="Откуда узнали про нас?" id="sourceOfInfo"
-            onClick={changeSource}
+            onClick={(e) => changeSource(e)}
           >
             <option value="Откуда узнали про нас?" disabled>Откуда узнали про нас?</option>
             {arrayOfSource.map((it) => {
